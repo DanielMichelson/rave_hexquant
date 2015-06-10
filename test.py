@@ -40,6 +40,14 @@ class TestHex(unittest.TestCase):
         result = rave_hexquant.q2hex(["TH","DBZH"])
         self.assertEqual(result, '0x3')
 
+    def test_hex2q(self):
+        result = rave_hexquant.hex2q('0x3')
+        self.assertEquals(result, ['TH', 'DBZH'])
+
+    def test_bogusquant(self):
+        result = rave_hexquant.hex2q('0x3')
+        self.assertNotEquals(result, ['foo', 'bar'])
+
 
 if __name__ == '__main__':
     unittest.main()

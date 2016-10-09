@@ -26,11 +26,13 @@ along with RAVE.  If not, see <http://www.gnu.org/licenses/>.
 
 import unittest
 import rave_hexquant
+from math import pi
 
 class TestHex(unittest.TestCase):
     """
     Our basic test class
     """
+    fdiv_ref = 1.333820449136241
 
     def test_q2hex(self):
         """
@@ -47,6 +49,14 @@ class TestHex(unittest.TestCase):
     def test_bogusquant(self):
         result = rave_hexquant.hex2q('0x3')
         self.assertNotEquals(result, ['foo', 'bar'])
+
+    def test_FDIV(self):
+        result = 4195835.0/3145727.0
+        self.assertEquals(result, self.fdiv_ref)
+
+    def test_pi(self):
+        self.assertAlmostEqual(pi, 3.14, 2)
+        self.assertEqual(1+1, 2)
 
 
 if __name__ == '__main__':
